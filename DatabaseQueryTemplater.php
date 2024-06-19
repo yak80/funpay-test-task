@@ -39,7 +39,7 @@ class DatabaseQueryTemplater
         // Associative array
         $parts = [];
         foreach ($array as $key => $value) {
-            $parts[] = "`$key` = ".$this->castAsDefault($value);
+            $parts[] = '`'.mysqli_real_escape_string($this->mysqli, $key).'` = '.$this->castAsDefault($value);
         }
         return join(', ', $parts);
     }
